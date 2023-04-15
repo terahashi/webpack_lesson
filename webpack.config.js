@@ -5,14 +5,19 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 //⬇︎html-webpack-pluginを追加する。
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+//⬇︎clean-webpack-pluginを追加する。
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+
+
 
 
 //path.resolveで絶対パスを取得することができる。
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/js/main.js',
     output: {
         path: path.resolve(__dirname, './dist'),
-        filename: 'main.js',
+        filename: 'js/main.js',
     },
 
     module: {
@@ -31,14 +36,20 @@ module.exports = {
         ],
     },
 
+
     // ⬇︎mini-css-extract-plugin
     // ⬇︎html-webpack-plugin
+    // ⬇︎clean-webpack-plugin
     plugins:[
-        new MiniCssExtractPlugin(),
-        new HtmlWebpackPlugin({
-            template: './src/index.html',
+        new MiniCssExtractPlugin({
+            filename: './css/main.css',
         }),
+        new HtmlWebpackPlugin({
+            template: './src/template/index.html',
+        }),
+        new CleanWebpackPlugin(),
     ],
+
 
 }
 
