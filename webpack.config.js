@@ -20,8 +20,11 @@ module.exports = {
         filename: 'js/main.js',
     },
 
+
     module: {
         rules: [
+
+            //⬇︎css-loader
             {
                 test: /\.css/,
                 use: [
@@ -33,7 +36,22 @@ module.exports = {
                     },
                 ],
             },
-        ],
+
+            //⬇︎file-loader(画像のloader)
+            {
+                test: /\.(png|jpg)/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            esModule: false,
+                            name: 'images/[name].[ext]',
+                        },
+                    },
+                ],
+            },
+
+    ],
     },
 
 
