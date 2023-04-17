@@ -37,18 +37,14 @@ module.exports = {
                 ],
             },
 
-            //⬇︎file-loader(画像のloader)
+
+            //⬇︎Asset Modules(webpack5の標準画像loader：便利)
             {
                 test: /\.(png|jpg)/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            esModule: false,
-                            name: 'images/[name].[ext]',
-                        },
-                    },
-                ],
+                type: 'asset/resource',
+                generator:{
+                    filename: 'images/[name][ext]',
+                },
             },
 
     ],
