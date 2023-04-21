@@ -1,0 +1,37 @@
+
+@use './footer.scss';
+
+//変数
+$primay-color: orange;
+
+
+
+body{
+    color: blueviolet;
+}
+
+// mixin⬇とは…引数➡︎$direction, $value)を取ることができる。
+// mixinの中で変数として利用することができる。
+// javascriptの関数みたいなもの。関数(引数)。
+@mixin set-margin($direction, $value){
+    margin-#{$direction}: $value;
+}
+
+
+.content{
+    .title{
+        font-size: 24px;
+        color: $primay-color;
+    }
+    .title-lerge{
+        @extend .title;
+        font-size: 48px;
+    }
+    //mixin⬇︎
+    //上で定義したmixinと連動している。
+    // .contentに、margin-right:16px;という意味。
+    @include set-margin(right, 16px);
+}
+
+
+

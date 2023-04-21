@@ -1,7 +1,21 @@
-/*!********************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./src/css/main.css ***!
-  \********************************************************************/
-body{
-    color: blueviolet;
+/*!************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/css/main.scss ***!
+  \************************************************************************************************************/
+footer {
+  background-color: #000;
 }
 
+body {
+  color: blueviolet;
+}
+
+.content {
+  margin-right: 16px;
+}
+.content .title, .content .title-lerge {
+  font-size: 24px;
+  color: orange;
+}
+.content .title-lerge {
+  font-size: 48px;
+}
