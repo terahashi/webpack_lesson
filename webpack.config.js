@@ -18,25 +18,51 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 
 
-
+//部品を出力する(module.exports)
 //path.resolveで絶対パスを取得することができる。
 module.exports = {
+    // ⬇︎--mode developmentコマンドを短縮できる
+    // npx webpackで実行できる。
+    mode: 'development',
 
+    // ⬇︎jsソースマップ
+    devtool: 'source-map',
+
+    //jsのentry場所とoutput場所
     entry: './src/js/main.js',
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: 'js/main.js',
     },
 
-    // ⬇︎Live Reload(自動更新)
+    // ⬇︎Live Reload(編集したらブラウザを自動更新)
     devServer: {
         static: path.resolve(__dirname, 'src'),
      },
 
+
+
     module: {
         rules: [
+            // ⬇︎babel設定
+            {
+            test: /\.js/,
+            exclude: /node_modules/,
+            use: [
+                {
+                    //⬇︎babelを利用する
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            '@babel/preset-env',
+                            '@babel/preset-react',
+                        ],
+                    },
+                },
+            ],
+            },
 
-            //⬇︎css-loader
+            //⬇︎css-loader sass-loader MiniCssExtraPlugin
             {
                 test: /\.(css|sass|scss)/,
                 use: [
@@ -45,6 +71,10 @@ module.exports = {
                     },
                     {
                         loader: 'css-loader',
+                        // ⬇︎sourceMap
+                        options:{
+                            sourceMap: true,
+                        },
                     },
                     //⬇︎sass-loader
                     {
@@ -53,18 +83,33 @@ module.exports = {
                 ],
             },
 
-
             //⬇︎Asset Modules(webpack5の標準画像loader：便利)
             {
-                test: /\.(png|jpg)/,
+                test: /\.(png|jpg|jpeg)/,
                 type: 'asset/resource',
                 generator:{
                     filename: 'images/[name][ext]',
                 },
+
+                //⬇︎(画像自動軽量化)image-webpack-loader
+                use:[
+                    {
+                        loader: 'image-webpack-loader',
+                        options:{
+                            mozjpeg:{
+                                progressive: true,
+                                quality: 15,
+                            },
+                        },
+                    },
+                ],
+
             },
+
 
     ],
     },
+
 
 
     // ⬇︎mini-css-extract-plugin
