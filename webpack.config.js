@@ -55,6 +55,7 @@ module.exports = {
                     options: {
                         presets: [
                             '@babel/preset-env',
+                            //⬇︎React(babel/preset-react)を利用する
                             '@babel/preset-react',
                         ],
                     },

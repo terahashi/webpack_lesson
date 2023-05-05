@@ -6,7 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Template HTML TEST</title>
 </head>
-<body>
+
+
+<header>
+    <div class="menu">
+        <div class="menu__item">
+            <a href="index.html">index</a>
+        </div>
+    </div>
+</header>
+
+
+<body class="container">
     <h1>test webpack-dev-server</h1>
     <div class="content">
         <div class="title">
@@ -15,14 +26,13 @@
         <div class="title-lerge">
             title lerge
         </div>
-
-
         <!-- ⬇︎reactApp.jsx -->
         <div id="react-root"></div>
     </div>
 
-    <img src="<%= require('../images/icon.png') %>" alt="">
-    <img src="<%= require('../images/thumbnail.jpg') %>" alt="">
+    <div class="main-image">
+        <img class="icon" src="<%= require('../images/icon.png') %>" alt="" >
+    </div>
 </body>
 </html>
 
