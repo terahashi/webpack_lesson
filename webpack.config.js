@@ -32,7 +32,7 @@ module.exports = {
     entry: './src/js/main.js',
     output: {
         path: path.resolve(__dirname, './dist'),
-        filename: 'js/main.js',
+        filename: 'js/[name]-[contenthash].js',
     },
 
     // ⬇︎Live Reload(編集したらブラウザを自動更新)
@@ -89,7 +89,7 @@ module.exports = {
                 test: /\.(png|jpg|jpeg)/,
                 type: 'asset/resource',
                 generator:{
-                    filename: 'images/[name][ext]',
+                    filename: 'images/[name]-[contenthash].[ext]',
                 },
 
                 //⬇︎(画像自動軽量化)image-webpack-loader
@@ -107,7 +107,6 @@ module.exports = {
 
             },
 
-
     ],
     },
 
@@ -118,7 +117,7 @@ module.exports = {
     // ⬇︎clean-webpack-plugin
     plugins:[
         new MiniCssExtractPlugin({
-            filename: './css/main.css',
+            filename: './css/[name]-[contenthash].css',
         }),
 
         //index.html
